@@ -32,8 +32,81 @@ const initialState: compilerSliceStateType = {
     </body>
   </html>
     `,
-    css: "css code ",
-    javascript: "js code ",
+    css: `
+   body {
+      font-family: Arial, sans-serif;
+  }
+  
+  .container {
+      max-width: 400px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+  }
+  
+  input[type="text"] {
+      width: 70%;
+      padding: 8px;
+      margin-right: 5px;
+      border-radius: 3px;
+      border: 1px solid #ccc;
+  }
+  
+  button {
+      padding: 8px 16px;
+      border-radius: 3px;
+      border: none;
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+  }
+  
+  button:hover {
+      background-color: #45a049;
+  }
+  
+  ul {
+      list-style-type: none;
+      padding: 0;
+  }
+  
+  li {
+      margin: 10px 0;
+  }
+  
+  .delete {
+      color: red;
+      cursor: pointer;
+  }
+  
+    `,
+    javascript: `
+function addTask() {
+      var taskInput = document.getElementById("taskInput");
+      var taskList = document.getElementById("taskList");
+  
+      if (taskInput.value === "") {
+          alert("Please enter a task");
+          return;
+      }
+  
+      var li = document.createElement("li");
+      li.textContent = taskInput.value;
+      taskList.appendChild(li);
+  
+      var deleteButton = document.createElement("span");
+      deleteButton.textContent = " ❌🗑️";
+      deleteButton.className = "delete";
+      deleteButton.onclick = function() {
+          taskList.removeChild(li);
+      };
+      li.appendChild(deleteButton);
+  
+      taskInput.value = "";
+  }
+  
+    `,
   },
   CurrentLanguage: "html",
 };
